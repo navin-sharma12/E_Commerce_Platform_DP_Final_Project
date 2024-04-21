@@ -11,7 +11,7 @@ public class CustomerNotificationService implements OrderObserver {
     @Override
     public void update(Order order) {
         String emailBody = "Thank you for your order. Your order with ID " + order.getId() + " has been successfully placed.";
-        String customerEmail = "customer@example.com"; // This would realistically come from the order details or user profile
+        String customerEmail = "customer@example.com";
         emailService.sendEmail(customerEmail, "Order Confirmation", emailBody);
         System.out.println("Order confirmation email sent to " + customerEmail);
     }
