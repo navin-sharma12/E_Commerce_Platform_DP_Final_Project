@@ -1,36 +1,36 @@
 package com.neu.design.pattern.project.ECommercePlatform.models;
 
+import com.neu.design.pattern.project.ECommercePlatform.models.api.PersonAPI;
 import com.neu.design.pattern.project.ECommercePlatform.models.api.SystemUserAPI;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 public class PlatformUser implements SystemUserAPI {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
-    public int age;
-    public String fullName;
     public String username;
     public String password;
-    public String dateOfBirth;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
+    private Person person;
 
 
     @Override
     public String getFullName() {
-        return fullName;
+        return person.getFullName();
     }
 
     @Override
     public int getAge() {
-        return age;
+        return person.getAge();
     }
 
     @Override
     public String getDateOfBirth() {
-        return dateOfBirth;
+        return person.getDateOfBirth();
     }
 
     @Override
@@ -53,11 +53,15 @@ public class PlatformUser implements SystemUserAPI {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.person.setAge(age);
+    }
+    public void setPerson(Person person)
+    {
+        this.person = person;
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.person.setFullName( fullName);
     }
 
     public void setUsername(String username) {
@@ -69,6 +73,6 @@ public class PlatformUser implements SystemUserAPI {
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.person.setDateOfBirth(dateOfBirth);
     }
 }

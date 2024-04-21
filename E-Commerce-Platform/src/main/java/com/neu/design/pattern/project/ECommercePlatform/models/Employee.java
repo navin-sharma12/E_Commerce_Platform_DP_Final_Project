@@ -1,39 +1,56 @@
 package com.neu.design.pattern.project.ECommercePlatform.models;
 
 import com.neu.design.pattern.project.ECommercePlatform.models.api.EmployeeAPI;
+import com.neu.design.pattern.project.ECommercePlatform.models.api.PersonAPI;
 import com.neu.design.pattern.project.ECommercePlatform.models.api.SystemUserAPI;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
-public class Employee implements SystemUserAPI, EmployeeAPI {
-    public String fullName;
-    public int age;
 
-    public String dateOfBirth;
+@Entity
+public class Employee implements EmployeeAPI {
 
-    public double salary;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public String userName;
-    public String password;
+    private double salary;
 
-    public int employeeId;
+    private String designationTitle;
 
-    public String designationTitle;
-
-
-    @Override
-    public String getFullName() {
-        return fullName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public int getAge() {
-        return age;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
-    @Override
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public void setDesignationTitle(String designationTitle) {
+        this.designationTitle = designationTitle;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setUser(PlatformUser user) {
+        this.user = user;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private PlatformUser user;
+
+    public Employee(double salary, String designationTitle, Person person, PlatformUser user) {
+        this.salary = salary;
+        this.designationTitle = designationTitle;
+        this.person = person;
+        this.user = user;
     }
 
     @Override
@@ -42,22 +59,17 @@ public class Employee implements SystemUserAPI, EmployeeAPI {
     }
 
     @Override
-    public String getUsername() {
-        return userName;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public int getId() {
-        return employeeId;
-    }
-
-    @Override
     public String getDesignationTitle() {
         return designationTitle;
+    }
+
+    @Override
+    public PersonAPI getPerson() {
+        return person;
+    }
+
+    @Override
+    public SystemUserAPI getUser() {
+        return user;
     }
 }
