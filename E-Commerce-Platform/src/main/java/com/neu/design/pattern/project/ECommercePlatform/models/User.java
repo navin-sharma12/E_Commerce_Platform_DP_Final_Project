@@ -9,9 +9,12 @@ public class User implements SystemUserAPI {
     public String dateOfBirth;
     public int id;
 
+    public String fullName;
+
+
     @Override
-    public String getName() {
-        return userName;
+    public String getFullName() {
+        return fullName;
     }
 
     @Override
@@ -24,8 +27,9 @@ public class User implements SystemUserAPI {
         return dateOfBirth;
     }
 
+
     @Override
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
