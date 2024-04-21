@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import { AuthContext } from "./Auth";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
+import CreateUser from "../Pages/CreateUser";
 
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
   return (
@@ -31,7 +32,10 @@ function Nav() {
             <RouteWrapper path="/" exact component={Home} />
           </React.Fragment>
         ) : (
-          <RouteWrapper path="/" exact component={Login} />
+          <React.Fragment>
+            <RouteWrapper path="/" exact component={Login} />
+            <RouteWrapper path="/add-employee" exact component={CreateUser} />
+          </React.Fragment>
         )}
 
         <Route exact path="/">
