@@ -19,7 +19,7 @@ public class OrderController {
     @PostMapping("/place")
     public ResponseEntity<Order> placeOrder(@RequestBody List<CartItem> items) {
         Order order = new Order(items);
-        order.placeOrder(); // Observers are notified here
+        order.placeOrder();
         return ResponseEntity.ok(order);
     }
 
