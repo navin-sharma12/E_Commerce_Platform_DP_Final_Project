@@ -1,34 +1,57 @@
 package com.neu.design.pattern.project.ECommercePlatform.models;
 
-import com.neu.design.pattern.project.ECommercePlatform.models.api.ProductAPI;
+import jakarta.persistence.*;
 
-public class Product extends ProductAPI {
 
-    public Product(int id, String productName, int quantity, double price)
-    {
-        this.id = id;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.price  = price;
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private double price;
+    private int stockQuantity;
+
+    public Product() {}
+
+    public Product(String name, double price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
     }
-    @Override
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    @Override
-    public String getProductName() {
-        return getProductName();
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int getQuantity() {
-        return getQuantity();
-    }
-
-    @Override
     public double getPrice() {
         return price;
     }
 
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
 }
+
+

@@ -64,12 +64,13 @@ public class Employee implements EmployeeAPI {
     }
 
     @Override
-    public PersonAPI getPerson() {
+    public Person getPerson() {
+
         return person;
     }
 
     @Override
-    public SystemUserAPI getUser() {
+    public PlatformUser getUser() {
         return user;
     }
 }
