@@ -13,6 +13,11 @@ public class OrderBuilder {
         items.add(item);
         return this;
     }
+    public OrderBuilder addItem(List<CartItem> item) {
+       items = item;
+        return this;
+    }
+
 
     public Order build() {
         if (items.isEmpty()) {
