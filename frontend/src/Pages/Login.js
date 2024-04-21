@@ -6,6 +6,7 @@ import { validateInputField } from "../utils/validations";
 import axios from "axios";
 import { URLS } from "../utils/routesPath";
 import { AuthContext } from "../components/Auth";
+import { Link } from "react-router-dom";
 
 const initialState = {
   userName: "",
@@ -56,13 +57,11 @@ function Login() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log("hi");
 
     if (
       validateInputField({ field: userName, fieldName: "user name" }) &&
       validateInputField({ field: password, fieldName: "password" })
     ) {
-      console.log("validate");
       const body = { username: userName, password };
 
       axios
@@ -131,9 +130,14 @@ function Login() {
               />
             </Form.Group>
             <Button size="lg" variant="dark" type="submit">
-              Submit
+              Login
             </Button>
           </Form>
+          <Link to="/add-employee">
+            <Button size="lg" variant="dark" type="submit">
+              Sign up
+            </Button>
+          </Link>
         </Col>
       </Row>
     </div>
