@@ -4,7 +4,10 @@ import Layout from "./Layout";
 import { AuthContext } from "./Auth";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
+import Cart from "../Pages/Cart/Cart";
+import Product from "../Pages/AddProduct.js/Product";
 import CreateUser from "../Pages/CreateUser";
+
 
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
   return (
@@ -30,6 +33,8 @@ function Nav() {
           <React.Fragment>
             <RouteWrapper path="/home" exact component={Home} />
             <RouteWrapper path="/" exact component={Home} />
+            <RouteWrapper path="/cart" exact component={Cart} />
+            <RouteWrapper path="/shopping" exact component={Product} />
           </React.Fragment>
         ) : (
           <React.Fragment>
