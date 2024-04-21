@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class Employee implements SystemUserAPI, EmployeeAPI {
     public String fullName;
+
     public int age;
 
     public String dateOfBirth;

@@ -1,6 +1,7 @@
 package com.neu.design.pattern.project.ECommercePlatform.models.api;
 
 public class ItemAPI implements  Cloneable{
+
     private int price, id;
     private String name;
 
@@ -37,6 +38,4 @@ public class ItemAPI implements  Cloneable{
     public void setId(int id) {
         this.id = id;
     }
-
-
 }
