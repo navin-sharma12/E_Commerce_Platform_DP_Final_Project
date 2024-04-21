@@ -2,7 +2,7 @@ package com.neu.design.pattern.project.ECommercePlatform.patterns.strategy;
 
 import com.neu.design.pattern.project.ECommercePlatform.jpa.repository.UserRepository;
 import com.neu.design.pattern.project.ECommercePlatform.models.PlatformUser;
-import com.neu.design.pattern.project.ECommercePlatform.patterns.strategy.factory.ErrorFactory;
+import com.neu.design.pattern.project.ECommercePlatform.patterns.factory.ErrorFactory;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.function.Consumer;

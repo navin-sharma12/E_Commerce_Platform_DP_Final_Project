@@ -1,4 +1,4 @@
-package com.neu.design.pattern.project.ECommercePlatform.patterns.strategy.factory;
+package com.neu.design.pattern.project.ECommercePlatform.patterns.factory;
 
 import com.neu.design.pattern.project.ECommercePlatform.suppliers.StringSuppliers;
 import org.springframework.http.HttpStatus;
