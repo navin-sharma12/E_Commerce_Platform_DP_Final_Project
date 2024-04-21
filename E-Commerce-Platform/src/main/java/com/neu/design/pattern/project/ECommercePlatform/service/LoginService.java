@@ -2,7 +2,7 @@ package com.neu.design.pattern.project.ECommercePlatform.service;
 
 import com.neu.design.pattern.project.ECommercePlatform.jpa.repository.UserRepository;
 import com.neu.design.pattern.project.ECommercePlatform.models.PlatformUser;
-import com.neu.design.pattern.project.ECommercePlatform.patterns.strategy.factory.ErrorFactory;
+import com.neu.design.pattern.project.ECommercePlatform.patterns.factory.ErrorFactory;
 import com.neu.design.pattern.project.ECommercePlatform.suppliers.StringSuppliers;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
