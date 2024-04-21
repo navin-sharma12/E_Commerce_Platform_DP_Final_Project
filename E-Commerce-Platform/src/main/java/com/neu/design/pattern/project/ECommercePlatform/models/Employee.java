@@ -6,7 +6,8 @@ import lombok.Data;
 
 @Data
 public class Employee implements SystemUserAPI, EmployeeAPI {
-    public String name;
+    public String fullName;
+
     public int age;
 
     public String dateOfBirth;
@@ -22,8 +23,8 @@ public class Employee implements SystemUserAPI, EmployeeAPI {
 
 
     @Override
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class Employee implements SystemUserAPI, EmployeeAPI {
     }
 
     @Override
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
