@@ -34,13 +34,12 @@ function Login() {
       })
         .then((response) => {
           if (response.status == 200) {
+            displayToast({ type: "success", msg: "Login successfull!" });
             setUserData(response);
-            displayToast({ type: "success", msg: "User added successfully!" });
           }
         })
         .catch((err) => {
-          displayToast({ type: "error", msg: "User addition unsuccessful." });
-          console.log(err);
+          displayToast({ type: "error", msg: "Login error" });
         });
     };
   }
@@ -84,7 +83,7 @@ function Login() {
               Sign up
             </Button>
           </Link>
-          <Link to="/admin">
+          <Link to="/admin-login">
             <Button size="lg" variant="dark" type="submit">
               Admin
             </Button>
