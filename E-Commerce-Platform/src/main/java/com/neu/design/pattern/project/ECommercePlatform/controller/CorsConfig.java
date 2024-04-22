@@ -12,7 +12,7 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/v1/user/create").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/v1/user/*").allowedOrigins("http://localhost:3000");
                 // Replace "http://localhost:3000" with the origin of your frontend application
             }
         };
