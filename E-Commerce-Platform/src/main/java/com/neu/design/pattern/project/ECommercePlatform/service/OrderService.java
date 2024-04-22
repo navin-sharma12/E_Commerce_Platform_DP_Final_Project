@@ -27,6 +27,10 @@ public class OrderService {
                 .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
     }
 
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
+    }
+
     public Order updateOrderState(Long id, OrderState state) {
         Order order = findOrderById(id);
         order.setState(state);
