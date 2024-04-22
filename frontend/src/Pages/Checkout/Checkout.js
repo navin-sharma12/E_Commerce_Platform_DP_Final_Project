@@ -34,24 +34,46 @@ const Checkout = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundColor: "orange",
-        marging: "20px",
-        marginTop: "80px",
-        marginLeft: "25%",
-        padding: "20px",
-        height: "400px",
-        width: "500px",
-      }}
-    >
-      <h1>Checkout Page</h1>
-      <form>
+    <div style={{
+      backgroundColor: "aliceblue",
+      marging: "20px",
+      marginTop: "70px",
+      marginLeft: "2%",
+      padding: "20px",
+      // height: "max-content",
+      width: "500px",
+    }}>
+      <h2>Checkout Page</h2>
+      <div>
+          <p>Invoice Date: {invoiceDate} </p>
+          {/* <input type="text" value={invoiceDate} readOnly /> */}
+          <p>Order ID: {orderId}</p>
+          {/* <input type="text" value={orderId} readOnly /> */}
+        </div>
+        <div>
+          <label>Items:</label>
+          {items &&
+            items.map((item, index) => (
+              <div key={index}>
+                <p>Product Name: {item["Product Name"]}</p>
+                {/* <input type="text" value={item["Product Name"]} readOnly /> */}
+                <p>Price: {item.Price}</p>
+                {/* <input type="text" value={item.Price} readOnly /> */}
+                <p>Quantity: {item.Quantity}</p>
+                {/* <input type="text" value={item.Quantity} readOnly /> */}
+              </div>
+            ))}
+        </div>
+        <div>
+          <p>Total Price: {totalPrice.toFixed(2)}</p>
+          {/* <input type="text" value={totalPrice.toFixed(2)} readOnly /> */}
+        </div>
+
+
+      {/* <form>
         <div>
           <label>Invoice Date:</label>
           <input type="text" value={invoiceDate} readOnly />
-        </div>
-        <div>
           <label>Order ID:</label>
           <input type="text" value={orderId} readOnly />
         </div>
@@ -73,7 +95,7 @@ const Checkout = () => {
           <label>Total Price:</label>
           <input type="text" value={totalPrice.toFixed(2)} readOnly />
         </div>
-      </form>
+      </form> */}
       <Link to="/shopping">
         <button>Continue Shopping</button>
       </Link>
