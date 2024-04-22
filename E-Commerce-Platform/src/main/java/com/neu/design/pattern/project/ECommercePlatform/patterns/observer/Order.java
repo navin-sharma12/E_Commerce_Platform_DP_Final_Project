@@ -1,5 +1,6 @@
 package com.neu.design.pattern.project.ECommercePlatform.patterns.observer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.factory.StateFactory;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.CartItem;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.state.OrderState;
@@ -21,6 +22,7 @@ public class Order {
     private List<CartItem> items;
 
     @Transient
+    @JsonIgnore
     private OrderState state;
     @Transient
     private List<OrderObserver> observers;
