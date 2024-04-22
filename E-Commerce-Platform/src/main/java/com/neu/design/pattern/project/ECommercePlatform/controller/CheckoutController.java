@@ -16,8 +16,8 @@ public class CheckoutController {
     private CheckoutFacade checkoutFacade;
 
     @PostMapping()
-    public ResponseEntity<String> completeCheckout(@RequestBody Cart cart) {
-        checkoutFacade.completeCheckout(cart);
+    public ResponseEntity<String> completeCheckout() {
+        checkoutFacade.completeCheckout(Cart.getInstance());
         return ResponseEntity.ok("Checkout completed successfully.");
     }
 }

@@ -2,11 +2,18 @@ package com.neu.design.pattern.project.ECommercePlatform.patterns.observer;
 
 import com.neu.design.pattern.project.ECommercePlatform.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerNotificationService implements OrderObserver {
 
-    @Autowired
     EmailService emailService;
+
+    @Autowired
+    public CustomerNotificationService(EmailService emailService) {
+        this.emailService = emailService;
+    }
 
     @Override
     public void update(Order order) {
