@@ -80,7 +80,6 @@ public class Order {
 
     public void placeOrder() {
         observers.forEach(observer -> observer.update(this));
-
         next();
 
     }
