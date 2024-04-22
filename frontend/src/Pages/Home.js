@@ -29,7 +29,7 @@ function Home() {
         <Button
           style={{
             fontSize: "1.5em", // Increase font size for bigger button
-            backgroundColor: "rgb(238, 136, 73)", // Set background color
+            backgroundColor: "#2C3E50", // Set background color
             color: "white",
             height: "73px",
             width: "700px", // Set text color
