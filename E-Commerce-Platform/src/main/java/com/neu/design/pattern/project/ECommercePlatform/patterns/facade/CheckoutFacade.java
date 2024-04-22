@@ -21,7 +21,7 @@ public class CheckoutFacade {
     private InvoiceFactory invoiceFactory;
 
     public String completeCheckout(Cart cart) {
-        Order order = orderService.createOrder(new ArrayList<>(cart.getItems()));
+        Order order = orderService.createOrder(cart.getItems());
         order.placeOrder();
         String invoice = invoiceFactory.generateInvoice(order);
         return invoice;
