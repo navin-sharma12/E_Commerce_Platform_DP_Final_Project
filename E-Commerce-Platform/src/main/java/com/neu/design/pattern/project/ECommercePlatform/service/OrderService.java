@@ -18,6 +18,7 @@ public class OrderService {
 
     public Order createOrder(List<CartItem> items) {
         Order order = new OrderBuilder().addItem(items).build();
+        order.placeOrder();
         return orderRepository.save(order);
     }
 
