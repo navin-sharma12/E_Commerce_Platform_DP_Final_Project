@@ -8,6 +8,7 @@ function AdminPage() {
       <h1>Admin Dashboard</h1>
       <Link to="/create-product"><button>Create Product</button></Link>
       <Link to="/remove-product"><button>Remove Product</button></Link>
+      <Link to="/orders"><button>View Orders</button></Link>
     </div>
   );
 }
