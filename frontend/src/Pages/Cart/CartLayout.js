@@ -17,6 +17,9 @@ function CartLayout({ items, fetchCartItems }) {
         <CartItem key={index} item={item} fetchCartItems={fetchCartItems} />
       ))}
       <h3>Total: ${total.toFixed(2)}</h3>
+      <Link to="/shopping">
+        <button>Continue Shopping</button>
+      </Link>
       <Link to="/Checkout">
         <button>Proceed to Checkout</button>
       </Link>
