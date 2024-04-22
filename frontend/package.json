@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "inventory-management",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,8 +17,8 @@
     "postcss-safe-parser": "^6.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.0.0-beta.4",
-    "react-dom": "^18.2.0",
     "react-datepicker": "^4.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "react-router-dom": "^5.2.0",
     "react-toastify": "^7.0.4",
@@ -47,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.65.1"
   }
 }
