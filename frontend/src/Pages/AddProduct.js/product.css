@@ -1,0 +1,13 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+  background-color: rgb(235, 162, 88);
+  border-radius: 10px;
+  padding: 10px;
+}

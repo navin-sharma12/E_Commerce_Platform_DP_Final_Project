@@ -1,0 +1,38 @@
+/* .cart-container {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.cart {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+
+.cart-item {
+  display: flex;
+  background-color: #e9a463;
+  align-items: center;
+  margin-bottom: 20px;
+  margin: 20px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.cart-item button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cart-item button:hover {
+  background-color: #c82333;
+}

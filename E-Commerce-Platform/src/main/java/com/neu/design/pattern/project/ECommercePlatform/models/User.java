@@ -8,7 +8,6 @@ public class User implements SystemUserAPI {
     public int age;
     public String dateOfBirth;
     public int id;
-
     public String fullName;
 
 
