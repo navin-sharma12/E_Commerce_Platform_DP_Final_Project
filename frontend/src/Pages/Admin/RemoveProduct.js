@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./removeProduct.css";
 
 function RemoveProduct() {
   const [products, setProducts] = useState([]);
