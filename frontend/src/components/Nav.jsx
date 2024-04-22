@@ -11,6 +11,9 @@ import Checkout from "../Pages/Checkout/Checkout";
 import AdminPage from "../Pages/Admin/AdminPage";
 import CreateProduct from "../Pages/Admin/CreateProduct";
 import RemoveProduct from "../Pages/Admin/RemoveProduct";
+import OrdersPage from "../Pages/Admin/OrdersPage";
+
+
 
 
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
@@ -41,17 +44,9 @@ function Nav() {
             <RouteWrapper path="/shopping" exact component={Product} />
             <RouteWrapper path="/checkout" exact component={Checkout} />
             <RouteWrapper path="/admin" exact component={AdminPage} />
-            <RouteWrapper
-              path="/create-product"
-              exact
-              component={CreateProduct}
-            />
-            <RouteWrapper
-              path="/remove-product"
-              exact
-              component={RemoveProduct}
-            />
-            <RouteWrapper path="/add-employee" exact component={CreateUser} />
+            <RouteWrapper path="/create-product" exact component={CreateProduct} />
+            <RouteWrapper path="/remove-product" exact component={RemoveProduct} />
+            <RouteWrapper path="/orders" exact component={OrdersPage} />
           </React.Fragment>
         ) : (
           <React.Fragment>
