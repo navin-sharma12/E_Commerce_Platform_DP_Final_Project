@@ -6,7 +6,13 @@ function RemoveProduct() {
 
   // Fetch products from the API
   useEffect(() => {
-    fetch('http://localhost:8080/v1/products')
+    fetch('http://localhost:8080/v1/products', {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error('Error fetching products:', error));
@@ -21,17 +27,25 @@ function RemoveProduct() {
     }
   };
 
+  
+
   // Delete selected products
-  const deleteSelectedProducts = () => {
+  const deleteSelectedProducts = async(event) => {
+    event.preventDefault();
     selectedProducts.forEach(id => {
       fetch(`http://localhost:8080/v1/products/${id}`, {
-        method: 'DELETE'
+        method: "DELETE",
+        mode: 'cors',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        if (response.status == 200) {
+          setProducts(products.filter(product => product.id !== id));
+          setSelectedProducts(selectedProducts.filter(selectedId => selectedId !== id));
+        }
       })
-      .then(() => {
-        setProducts(products.filter(product => product.id !== id));
-        setSelectedProducts(selectedProducts.filter(selectedId => selectedId !== id));
-      })
-      .catch(error => console.error('Error deleting product:', error));
+        .catch(error => console.error('Error deleting product:', error));
     });
   };
 

@@ -1,7 +1,15 @@
 import React from "react";
+import axios from "axios";
 import "./product.css";
 
 const ProductCard = ({ product }) => {
+  const handleAddToCart = async () => {
+      try {
+        await axios.post("http://localhost:8080/v1/cart/add", product);
+      } catch (error) {
+        console.error("Error adding item to cart:", error);
+      }
+    };
   return (
     <div>
       <div className="card">
@@ -10,7 +18,7 @@ const ProductCard = ({ product }) => {
           <h2>{product.name}</h2>
           <p>{product.description}</p>
           <p>Price: ${product.price}</p>
-          <button>Add to Cart</button>
+          <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
     </div>
