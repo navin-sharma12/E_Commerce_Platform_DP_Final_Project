@@ -4,10 +4,7 @@ import com.neu.design.pattern.project.ECommercePlatform.patterns.facade.Checkout
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/checkout")
@@ -15,9 +12,9 @@ public class CheckoutController {
     @Autowired
     private CheckoutFacade checkoutFacade;
 
-    @PostMapping()
-    public ResponseEntity<String> completeCheckout(@RequestBody Cart cart) {
-        checkoutFacade.completeCheckout(cart);
-        return ResponseEntity.ok("Checkout completed successfully.");
+    @GetMapping()
+    public ResponseEntity<String> completeCheckout() {
+        String invoice = checkoutFacade.completeCheckout(Cart.getInstance());
+        return ResponseEntity.ok(invoice);
     }
 }
