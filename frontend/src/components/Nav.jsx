@@ -42,6 +42,7 @@ function Nav() {
             <RouteWrapper path="/admin" exact component={AdminPage} />
             <RouteWrapper path="/create-product" exact component={CreateProduct} />
             <RouteWrapper path="/remove-product" exact component={RemoveProduct} />
+            <RouteWrapper path="/add-employee" exact component={CreateUser} />
           </React.Fragment>
         ) : (
           <React.Fragment>
