@@ -7,9 +7,11 @@ import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.Cart;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.CartItem;
 import com.neu.design.pattern.project.ECommercePlatform.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class CheckoutFacade {
 
     @Autowired
