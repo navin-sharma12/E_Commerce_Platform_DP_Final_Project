@@ -7,16 +7,10 @@ import CartLayout from "./CartLayout";
 import axios from "axios";
 import "./cart.css";
 
-<<<<<<< HEAD
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
-=======
-const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
-
->>>>>>> ec1887f20f13c7fbc37f8654212deb30c4552d15
   const fetchCartItems = async () => {
     try {
       const response = await axios.get("http://localhost:8080/v1/cart");
