@@ -26,7 +26,7 @@ public class OrderController {
     public ResponseEntity<Order> placeOrder(@RequestBody List<CartItem> items) {
         Order order = new Order(items);
         order.placeOrder();
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
