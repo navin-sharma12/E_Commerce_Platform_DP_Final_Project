@@ -1,45 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 const Checkout = () => {
-  const [invoiceData, setInvoiceData] = useState({
-    invoiceDate: "",
-    orderId: "",
-    items: [],
-  });
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const [checkoutItems, setCheckoutItems] = useState([]);
+  const {
+    "Invoice Date": invoiceDate,
+    "Order ID": orderId,
+    Items: items,
+  } = checkoutItems;
+  const fetchCheckout = async () => {
+    console.log("Checkout:Fetch");
     try {
       const response = await fetch("http://localhost:8080/v1/checkout");
-      const textResponse = await response.text();
-      console.log(textResponse);
-      const parsedData = parseInvoiceData(textResponse);
-      //setInvoiceData(parsedData);
+      const data = await response.json();
+      console.log("checkout data -  ", data);
+      setCheckoutItems(data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error displaying checkout:", error);
     }
   };
+  console.log("checkout -  ", checkoutItems);
 
-  const parseInvoiceData = (textData) => {
-    console.log("textData", textData);
-    const lines = textData.split("\n");
-    console.log("lines", lines);
-    const invoiceDate = lines[0].split(": ")[1];
-    console.log("invoiceDate", invoiceDate);
-    const orderId = lines[1].split(": ")[1];
-    const items = lines.slice(3).map((line) => {
-      const itemData = line.split(" - ");
-      const itemName = itemData[0];
-      const quantityPrice = itemData[1].split(", ");
-      const quantity = quantityPrice[0].split(": ")[1];
-      const price = quantityPrice[1].split(": ")[1];
-      return { itemName, quantity, price };
-    });
-    return { invoiceDate, orderId, items };
-  };
+  useEffect(() => {
+    console.log("Checkout:UseEffect");
+    fetchCheckout();
+  }, []);
 
   return (
     <div
@@ -54,30 +38,30 @@ const Checkout = () => {
       }}
     >
       <h1>Checkout Page</h1>
-      <div>
-        {/* <p>{invoiceData}</p> */}
-        {/* <h1>Invoice Data Form</h1>
-        <form>
-          <div>
-            <label>Invoice Date:</label>
-            <input type="text" value={invoiceData.invoiceDate} readOnly />
-          </div>
-          <div>
-            <label>Order ID:</label>
-            <input type="text" value={invoiceData.orderId} readOnly />
-          </div>
-          <div>
-            <label>Items:</label>
-            {invoiceData.items.map((item, index) => (
-              <div key={index} className="item">
-                <p>{item.itemName}</p>
-                <p>Quantity: {item.quantity}</p>
-                <p>Price: {item.price}</p>
+      <form>
+        <div>
+          <label>Invoice Date:</label>
+          <input type="text" value={invoiceDate} readOnly />
+        </div>
+        <div>
+          <label>Order ID:</label>
+          <input type="text" value={orderId} readOnly />
+        </div>
+        <div>
+          <label>Items:</label>
+          {items &&
+            items.map((item, index) => (
+              <div key={index}>
+                <label>Product Name:</label>
+                <input type="text" value={item["Product Name"]} readOnly />
+                <label>Price:</label>
+                <input type="text" value={item.Price} readOnly />
+                <label>Quantity:</label>
+                <input type="text" value={item.Quantity} readOnly />
               </div>
             ))}
-          </div>
-        </form> */}
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
