@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CartLayout from "./CartLayout";
-import axios from "axios";
 import "./cart.css";
-import displayToast from "../../utils/displayToast";
-
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -24,7 +21,10 @@ const Cart = () => {
   }, []);
 
   return (
-    <div>
+    <div className="main-layout-cart">
+      <h3 style={{ height: "50px", width: "300px", alignContent: "center" }}>
+        Shopping Cart
+      </h3>
       <CartLayout items={cartItems} fetchCartItems={fetchCartItems} />
     </div>
   );
