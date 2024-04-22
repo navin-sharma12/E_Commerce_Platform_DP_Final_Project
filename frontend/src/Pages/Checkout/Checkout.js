@@ -3,11 +3,18 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Checkout = () => {
   const [checkoutItems, setCheckoutItems] = useState([]);
+
   const {
     "Invoice Date": invoiceDate,
     "Order ID": orderId,
     Items: items,
   } = checkoutItems;
+
+  const totalPrice = items
+    ? items.reduce((total, item) => total + item.Price * item.Quantity, 0)
+    : 0;
+
+  console.log(totalPrice);
   const fetchCheckout = async () => {
     console.log("Checkout:Fetch");
     try {
@@ -61,6 +68,10 @@ const Checkout = () => {
                 <input type="text" value={item.Quantity} readOnly />
               </div>
             ))}
+        </div>
+        <div>
+          <label>Total Price:</label>
+          <input type="text" value={totalPrice.toFixed(2)} readOnly />
         </div>
       </form>
       <Link to="/shopping">
