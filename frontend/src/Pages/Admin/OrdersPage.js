@@ -29,7 +29,7 @@ function OrdersPage() {
         {orders.map(order => (
           <div key={order.id} style={{ border: '1px solid gray', padding: '10px', margin: '10px' }}>
             <p>Order ID: {order.id}</p>
-            <p>Status: {order.status}</p>
+            <p>Status: {order.stateType}</p>
             <button onClick={() => updateStatus(order.id, 'next')}>Next State</button>
             <button onClick={() => updateStatus(order.id, 'prev')}>Previous State</button>
           </div>
