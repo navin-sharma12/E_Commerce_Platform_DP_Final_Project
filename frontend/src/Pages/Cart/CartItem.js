@@ -6,7 +6,6 @@ const CartItem = ({ item, fetchCartItems }) => {
   console.log("item ", item);
   const onRemove = async () => {
     console.log("item in", item);
-    // console.log("itemToRemove " + item);
     fetch("http://localhost:8080/v1/cart/remove", {
       method: "DELETE",
       mode: "cors",
@@ -43,8 +42,8 @@ const CartItem = ({ item, fetchCartItems }) => {
   return (
     <div className="cart-item">
       {/* <img src={item.product.img} alt={item.name} /> */}
-      <div>
-        <h3>{item.product.name}</h3>
+      <div className="cartIndividual">
+        <p>Name: {item.product.name}</p>
         <p>Price: ${item.product.price}</p>
         <p>Quantity: {item.product.stockQuantity}</p>
         <button onClick={onRemove}>Remove</button>
