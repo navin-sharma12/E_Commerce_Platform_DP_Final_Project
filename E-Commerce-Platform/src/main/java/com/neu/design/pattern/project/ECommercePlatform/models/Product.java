@@ -13,12 +13,23 @@ public class Product {
     private double price;
     private int stockQuantity;
 
+    private String imgUrl;
+
+
+
     public Product() {}
 
     public Product(String name, double price, int stockQuantity) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
+    }
+
+    public Product(String name, double price, int stockQuantity, String imgUrl) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.imgUrl = imgUrl;
     }
 
     public Long getId() {
@@ -51,6 +62,14 @@ public class Product {
 
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
 

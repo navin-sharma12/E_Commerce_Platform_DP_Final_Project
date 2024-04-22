@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 import React, { useState,useEffect } from "react";
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> ec1887f20f13c7fbc37f8654212deb30c4552d15
 import CartLayout from "./CartLayout";
 import axios from "axios";
 import "./cart.css";
 
+<<<<<<< HEAD
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
+=======
+const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+>>>>>>> ec1887f20f13c7fbc37f8654212deb30c4552d15
   const fetchCartItems = async () => {
     try {
       const response = await axios.get("http://localhost:8080/v1/cart");
@@ -18,7 +28,9 @@ const Cart = () => {
 
   const handleRemoveFromCart = async (itemToRemove) => {
     try {
-      await axios.delete("http://localhost:8080/v1/cart/remove", { data: itemToRemove });
+      await axios.delete("http://localhost:8080/v1/cart/remove", {
+        data: itemToRemove,
+      });
       fetchCartItems();
     } catch (error) {
       console.error("Error removing item:", error);

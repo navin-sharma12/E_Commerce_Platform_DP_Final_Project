@@ -82,12 +82,14 @@ function Sidenav() {
 
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text style={{ marginRight: "25px" }}>
-            <FontAwesomeIcon
-              icon={faUser}
-              className="side-nav-icons"
-              onClick={logoutUser}
-              style={{ cursor: "pointer" }}
-            />
+            <Link to="/">
+              <FontAwesomeIcon
+                icon={faUser}
+                className="side-nav-icons"
+                style={{ cursor: "pointer" }}
+                onClick={(e) => setUserData(null)}
+              />
+            </Link>
             {/* <b> {userData.designation}</b> : {userData.fullName} */}Hi
           </Navbar.Text>
           <NavItem eventKey="manage-purchase-order">
