@@ -55,15 +55,6 @@ const Cart = () => {
         displayToast({ type: "error", msg: "Product was not removed." });
         console.log(err);
       });
-
-    // try {
-    //   await fetch("http://localhost:8080/v1/cart/remove/", {
-    //     method: "DELETE",
-    //   });
-    //   fetchCartItems();
-    // } catch (error) {
-    //   console.error("Error removing item:", error);
-    // }
   };
 
   useEffect(() => {
