@@ -9,7 +9,7 @@ export const AuthProvider = (props) => {
 
   let isLoggedIn = false;
 
-  if (userData && userData.id) {
+  if (userData) {
     isLoggedIn = true;
   }
   return (

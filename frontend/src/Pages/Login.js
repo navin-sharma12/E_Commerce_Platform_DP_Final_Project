@@ -1,103 +1,49 @@
-import React, { useReducer, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import "../styles/Login.css";
 import displayToast from "../utils/displayToast";
 import { validateInputField } from "../utils/validations";
-import axios from "axios";
-import { URLS } from "../utils/routesPath";
 import { AuthContext } from "../components/Auth";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-const initialState = {
-  userName: "",
-  password: "",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "USER_NAME":
-      return {
-        ...state,
-        userName: action.userName,
-      };
-
-    case "USER_PASSWORD":
-      return {
-        ...state,
-        password: action.password,
-      };
-
-    case "RESET":
-      return initialState;
-    default:
-      return state;
-  }
-};
-
 function Login() {
-  const { setUserData } = useContext(AuthContext);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const handleUserNameChange = (event) => {
-    dispatch({
-      type: "USER_NAME",
-      userName: event.target.value,
-    });
-  };
-
-  const handlePasswordChange = (event) => {
-    dispatch({
-      type: "USER_PASSWORD",
-      password: event.target.value,
-    });
-  };
-
-  const { userName, password } = state;
+  const [username, setUsername] = useState("");
+  const {setUserData} = useContext(AuthContext);
+  const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const submitForm = (e) => {
     e.preventDefault();
-
+    
     if (
-      validateInputField({ field: userName, fieldName: "user name" }) &&
+      validateInputField({ field: username, fieldName: "user name" }) &&
       validateInputField({ field: password, fieldName: "password" })
     ) {
-      const body = { username: userName, password };
-
-      axios
-        .post(URLS.VERIFY_USER, body)
-        .then(function (response) {
-          // console.log(response);
-          const { status } = response;
-
-          if (status == 200) {
-            if (response.data && response.data.id) {
-              setUserData(response.data);
-              resetForm();
-              displayToast({ type: "success", msg: "Login Successful!" });
-            } else {
-              console.log("validate");
-              displayToast({
-                type: "error",
-                msg: "Please enter valid credentials!",
-              });
-            }
+      fetch("http://localhost:8080/v1/user/login", {
+        method: "POST",
+        mode: 'cors',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            setUserData(response);
+            displayToast({ type: "success", msg: "User added successfully!" });
           }
         })
-        .catch(function (error) {
-          console.log(error);
-          displayToast({ type: "error", msg: "Oops! Something went wrong" });
+        .catch((err) => {
+          displayToast({ type: "error", msg: "User addition unsuccessful." });
+          console.log(err);
         });
-    } else {
-      // displayToast({type : "error", msg : "Login Failed!"});
-    }
-  };
-
-  const resetForm = () => {
-    dispatch({
-      type: "RESET",
-    });
-  };
+    };
+  }
 
   return (
     <div className="login-bg">
@@ -113,8 +59,8 @@ function Login() {
             <Form.Group className="mb-3" controlId="formBasicUserName">
               <Form.Label>User Name</Form.Label>
               <Form.Control
-                value={userName}
-                onChange={handleUserNameChange}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 type="text"
                 placeholder="Enter user name"
               />
@@ -126,7 +72,7 @@ function Login() {
                 value={password}
                 type="password"
                 placeholder="Password"
-                onChange={handlePasswordChange}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
             <Button size="lg" variant="dark" type="submit">
@@ -136,6 +82,11 @@ function Login() {
           <Link to="/add-employee">
             <Button size="lg" variant="dark" type="submit">
               Sign up
+            </Button>
+          </Link>
+          <Link to="/admin">
+            <Button size="lg" variant="dark" type="submit">
+              Admin
             </Button>
           </Link>
         </Col>
