@@ -12,6 +12,7 @@ import AdminPage from "../Pages/Admin/AdminPage";
 import CreateProduct from "../Pages/Admin/CreateProduct";
 import RemoveProduct from "../Pages/Admin/RemoveProduct";
 
+
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
   return (
     <Route

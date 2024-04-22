@@ -4,6 +4,7 @@ import axios from "axios";
 import "./cart.css";
 import displayToast from "../../utils/displayToast";
 
+
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
