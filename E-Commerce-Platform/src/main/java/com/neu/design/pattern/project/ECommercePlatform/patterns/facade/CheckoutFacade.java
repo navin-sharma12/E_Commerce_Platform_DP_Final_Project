@@ -20,10 +20,10 @@ public class CheckoutFacade {
     @Autowired
     private InvoiceFactory invoiceFactory;
 
-    public void completeCheckout(Cart cart) {
+    public String completeCheckout(Cart cart) {
         Order order = orderService.createOrder(new ArrayList<>(cart.getItems()));
         order.placeOrder();
         String invoice = invoiceFactory.generateInvoice(order);
-        order.printStatus();
+        return invoice;
     }
 }
