@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Checkout = () => {
   const [checkoutItems, setCheckoutItems] = useState([]);
@@ -62,6 +63,9 @@ const Checkout = () => {
             ))}
         </div>
       </form>
+      <Link to="/shopping">
+        <button>Continue Shopping</button>
+      </Link>
     </div>
   );
 };
