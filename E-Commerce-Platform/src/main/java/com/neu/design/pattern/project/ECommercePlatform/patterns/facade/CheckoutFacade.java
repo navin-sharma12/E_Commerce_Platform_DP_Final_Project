@@ -6,6 +6,7 @@ import com.neu.design.pattern.project.ECommercePlatform.patterns.observer.Order;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.Cart;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.CartItem;
 import com.neu.design.pattern.project.ECommercePlatform.service.OrderService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +23,8 @@ public class CheckoutFacade {
 
     public String completeCheckout(Cart cart) {
         Order order = orderService.createOrder(cart.getItems());
-        order.placeOrder();
-        String invoice = invoiceFactory.generateInvoice(order);
-        return invoice;
+        JSONObject invoice = invoiceFactory.generateInvoice(order);
+        cart.removeAllItems();
+        return invoice.toString();
     }
 }

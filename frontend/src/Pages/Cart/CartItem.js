@@ -6,23 +6,14 @@ const CartItem = ({ item, fetchCartItems }) => {
   console.log("item ", item);
   const onRemove = async () => {
     console.log("item in", item);
-    fetch("http://localhost:8080/v1/cart/remove", {
+    // console.log("itemToRemove " + item);
+    const url = "http://localhost:8080/v1/cart/remove/" + item.product.id;
+    fetch(url, {
       method: "DELETE",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        id: item.id,
-        product: {
-          id: item.product.id,
-          name: item.product.name,
-          price: item.product.price,
-          stockQuantity: item.product.stockQuantity,
-          imgUrl: item.product.imgUrl,
-        },
-        quantity: item.quantity,
-      }),
     })
       .then((response) => {
         if (response.status == 200) {
