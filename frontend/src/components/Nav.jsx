@@ -7,9 +7,11 @@ import Home from "../Pages/Home";
 import Cart from "../Pages/Cart/Cart";
 import Product from "../Pages/AddProduct.js/Product";
 import CreateUser from "../Pages/CreateUser";
+import Checkout from "../Pages/Checkout/Checkout";
 import AdminPage from "../Pages/Admin/AdminPage";
 import CreateProduct from "../Pages/Admin/CreateProduct";
 import RemoveProduct from "../Pages/Admin/RemoveProduct";
+
 
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
   return (
@@ -37,6 +39,7 @@ function Nav() {
             <RouteWrapper path="/" exact component={Home} />
             <RouteWrapper path="/cart" exact component={Cart} />
             <RouteWrapper path="/shopping" exact component={Product} />
+            <RouteWrapper path="/checkout" exact component={Checkout} />
             <RouteWrapper path="/admin" exact component={AdminPage} />
             <RouteWrapper
               path="/create-product"
