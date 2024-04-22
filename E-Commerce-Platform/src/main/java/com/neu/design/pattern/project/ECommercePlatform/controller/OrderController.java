@@ -37,15 +37,13 @@ public class OrderController {
 
     @PostMapping("/next/{id}")
     public ResponseEntity<Order> moveOrderToNextState(@PathVariable Long id) {
-        Order order = orderService.findOrderById(id);
-        order.next();
+        Order order = orderService.moveOrderToNextState(id);
         return ResponseEntity.ok(order);
     }
 
     @PostMapping("/prev/{id}")
     public ResponseEntity<Order> moveOrderToPreviousState(@PathVariable Long id) {
-        Order order = orderService.findOrderById(id);
-        order.previous();
+        Order order = orderService.moveOrderToPreviousState(id);
         return ResponseEntity.ok(order);
     }
 }
