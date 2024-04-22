@@ -10,6 +10,7 @@ import CreateUser from "../Pages/CreateUser";
 import AdminPage from "../Pages/Admin/AdminPage";
 import CreateProduct from "../Pages/Admin/CreateProduct";
 import RemoveProduct from "../Pages/Admin/RemoveProduct";
+import OrdersPage from "../Pages/Admin/OrdersPage";
 
 
 
@@ -42,6 +43,7 @@ function Nav() {
             <RouteWrapper path="/admin" exact component={AdminPage} />
             <RouteWrapper path="/create-product" exact component={CreateProduct} />
             <RouteWrapper path="/remove-product" exact component={RemoveProduct} />
+            <RouteWrapper path="/orders" exact component={OrdersPage} />
           </React.Fragment>
         ) : (
           <React.Fragment>
