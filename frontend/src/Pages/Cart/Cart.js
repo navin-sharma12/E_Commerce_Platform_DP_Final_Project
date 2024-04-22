@@ -20,9 +20,7 @@ const Cart = () => {
 
   const handleRemoveFromCart = async (itemToRemove) => {
     console.log("itemToRemove " + itemToRemove);
-
     const updatedCartItems = cartItems.filter((item) => item !== itemToRemove);
-    // setCartItems(updatedCartItems);
     console.log("updatedCartItems ", updatedCartItems[0]);
 
     fetch("http://localhost:8080/v1/cart/remove", {
