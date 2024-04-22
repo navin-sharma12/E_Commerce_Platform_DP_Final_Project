@@ -11,8 +11,6 @@ import AdminPage from "../Pages/Admin/AdminPage";
 import CreateProduct from "../Pages/Admin/CreateProduct";
 import RemoveProduct from "../Pages/Admin/RemoveProduct";
 
-
-
 function RouteWrapper({ component: Component, TransparentNav, ...rest }) {
   return (
     <Route
@@ -40,8 +38,16 @@ function Nav() {
             <RouteWrapper path="/cart" exact component={Cart} />
             <RouteWrapper path="/shopping" exact component={Product} />
             <RouteWrapper path="/admin" exact component={AdminPage} />
-            <RouteWrapper path="/create-product" exact component={CreateProduct} />
-            <RouteWrapper path="/remove-product" exact component={RemoveProduct} />
+            <RouteWrapper
+              path="/create-product"
+              exact
+              component={CreateProduct}
+            />
+            <RouteWrapper
+              path="/remove-product"
+              exact
+              component={RemoveProduct}
+            />
             <RouteWrapper path="/add-employee" exact component={CreateUser} />
           </React.Fragment>
         ) : (

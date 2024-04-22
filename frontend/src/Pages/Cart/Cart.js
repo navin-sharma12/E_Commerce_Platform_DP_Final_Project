@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CartLayout from "./CartLayout";
 import axios from "axios";
 import "./cart.css";
@@ -17,7 +17,9 @@ const Cart = () => {
 
   const handleRemoveFromCart = async (itemToRemove) => {
     try {
-      await axios.delete("http://localhost:8080/v1/cart/remove", { data: itemToRemove });
+      await axios.delete("http://localhost:8080/v1/cart/remove", {
+        data: itemToRemove,
+      });
       fetchCartItems();
     } catch (error) {
       console.error("Error removing item:", error);
