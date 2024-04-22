@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 import "./cart.css";
 
 function CartLayout({ items, onRemove }) {
   const total = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    // (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.product.price,
     0
   );
 
@@ -15,7 +17,10 @@ function CartLayout({ items, onRemove }) {
         <CartItem key={index} item={item} onRemove={onRemove} />
       ))}
       <h3>Total: ${total.toFixed(2)}</h3>
-      <button>Proceed to Checkout</button>
+      <Link to="/Checkout">
+          <button>Proceed to Checkout</button>
+      </Link>
+
     </div>
   );
 }
