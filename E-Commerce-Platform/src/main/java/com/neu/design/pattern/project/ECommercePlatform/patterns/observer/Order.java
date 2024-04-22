@@ -1,5 +1,6 @@
 package com.neu.design.pattern.project.ECommercePlatform.patterns.observer;
 
+import com.neu.design.pattern.project.ECommercePlatform.patterns.factory.StateFactory;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.CartItem;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.state.OrderState;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.state.ProcessingState;
@@ -23,16 +24,35 @@ public class Order {
     @Transient
     private List<OrderObserver> observers;
 
+    public String getStateType() {
+        return stateType;
+    }
+
+    public void setStateType(String stateType) {
+        this.stateType = stateType;
+    }
+
+    private String stateType;
+
+    @PostLoad
+    private void initializeTransientFields() {
+        this.state = StateFactory.getState(this.stateType);
+        this.observers = new ArrayList<>();
+        observers.add(new CustomerNotificationService());
+    }
+
     public Order() {
         this.state = new ProcessingState();
         this.items = new ArrayList<>();
         this.observers = new ArrayList<>();
+        this.stateType = "processing";
         observers.add(new CustomerNotificationService());
     }
     public Order(List<CartItem> items) {
         this.state = new ProcessingState();
         this.items = items;
         this.observers = new ArrayList<>();
+        this.stateType = "processing";
         observers.add(new CustomerNotificationService());
     }
     public void setState(OrderState state) {

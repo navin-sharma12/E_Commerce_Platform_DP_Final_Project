@@ -6,6 +6,7 @@ public class ProcessingState implements OrderState {
     @Override
     public void next(Order order) {
         order.setState(new ShippedState());
+        order.setStateType("shipped");
     }
 
     @Override
