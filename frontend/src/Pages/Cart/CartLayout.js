@@ -5,7 +5,8 @@ import "./cart.css";
 
 function CartLayout({ items, onRemove }) {
   const total = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    // (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.product.price,
     0
   );
 

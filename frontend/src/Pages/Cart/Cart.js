@@ -2,29 +2,57 @@ import React, { useState, useEffect } from "react";
 import CartLayout from "./CartLayout";
 import axios from "axios";
 import "./cart.css";
-
+import displayToast from "../../utils/displayToast";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const fetchCartItems = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/v1/cart");
-      setCartItems(response.data);
+      const response = await fetch("http://localhost:8080/v1/cart");
+      const data = await response.json();
+      console.log("cartData ", data);
+      setCartItems(data);
     } catch (error) {
       console.error("Error fetching cart items:", error);
     }
   };
 
   const handleRemoveFromCart = async (itemToRemove) => {
-    try {
-      await axios.delete("http://localhost:8080/v1/cart/remove", {
-        data: itemToRemove,
+    console.log("itemToRemove " + itemToRemove);
+    const updatedCartItems = cartItems.filter((item) => item !== itemToRemove);
+    console.log("updatedCartItems ", updatedCartItems[0]);
+
+    fetch("http://localhost:8080/v1/cart/remove", {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        quantity: 1,
+        product: {
+          id: updatedCartItems[0].product.id,
+          name: updatedCartItems[0].product.name,
+          price: updatedCartItems[0].product.price,
+          stockQuantity: updatedCartItems[0].product.stockQuantity,
+          imgUrl: updatedCartItems[0].product.imgUrl,
+        },
+      }),
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          fetchCartItems();
+          displayToast({
+            type: "success",
+            msg: "Product removed successfully from  the cart!",
+          });
+        }
+      })
+      .catch((err) => {
+        displayToast({ type: "error", msg: "Product was not removed." });
+        console.log(err);
       });
-      fetchCartItems();
-    } catch (error) {
-      console.error("Error removing item:", error);
-    }
   };
 
   useEffect(() => {
