@@ -8,36 +8,31 @@ function CreateProduct() {
   const [submitted, setSubmitted] = useState(false); // State to indicate submission success
   const [isSubmitting, setIsSubmitting] = useState(false); // State to show loading status
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-
-    const productData = {
-      name,
-      price: parseFloat(price),
-      stockQuantity: parseInt(quantity, 10)
-    };
-
-    console.log('Submitting product:', productData);
-    setIsSubmitting(true); // Show loading status
 
     // Use Fetch API to send data to your API endpoint
     fetch('http://localhost:8080/v1/products', {
-      method: 'POST',
+      method: "POST",
+      mode: 'cors',
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(productData)
+      body: JSON.stringify({
+        name: name,
+        price: parseFloat(price),
+        stockQuantity: parseInt(quantity, 10)
+      })
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      setIsSubmitting(false); // Hide loading status
-      setSubmitted(true); // Indicate submission success
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      setIsSubmitting(false); // Hide loading status
-    });
+      .then((response) => {
+        console.log(response)
+        if (response.status == 200) {
+          console.log('Success:');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     // Reset form fields
     setName('');
