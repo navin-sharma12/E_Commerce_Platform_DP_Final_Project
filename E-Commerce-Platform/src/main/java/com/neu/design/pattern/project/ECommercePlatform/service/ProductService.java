@@ -2,6 +2,7 @@ package com.neu.design.pattern.project.ECommercePlatform.service;
 
 import com.neu.design.pattern.project.ECommercePlatform.jpa.repository.ProductRepository;
 import com.neu.design.pattern.project.ECommercePlatform.models.Product;
+import com.neu.design.pattern.project.ECommercePlatform.patterns.decorator.DiscountedProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,12 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    public Product applyDiscount(Long id, double discountRate) {
+        Product product = findProductById(id);
+        Product discountedProduct = new DiscountedProduct(product, discountRate);
+        return productRepository.save(discountedProduct);
+    }
 
     public List<Product> findAllProducts() {
         return productRepository.findAll();

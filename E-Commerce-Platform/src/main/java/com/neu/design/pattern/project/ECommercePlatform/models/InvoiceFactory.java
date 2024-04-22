@@ -2,9 +2,11 @@ package com.neu.design.pattern.project.ECommercePlatform.models;
 
 import com.neu.design.pattern.project.ECommercePlatform.patterns.observer.Order;
 import com.neu.design.pattern.project.ECommercePlatform.patterns.singleton.CartItem;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public class InvoiceFactory {
 
     public static String generateInvoice(Order order) {
