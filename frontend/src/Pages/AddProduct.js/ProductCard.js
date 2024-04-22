@@ -30,10 +30,10 @@ const ProductCard = ({ product }) => {
   return (
     <div>
       <div className="card">
-        <img src={product.imgUrl} alt={product.name} />
+        {/* <img src={product.imgUrl} alt={product.name} /> */}
         <div className="card-body">
-          <h2>{product.name}</h2>
-          <p>{product.stockQuantity}</p>
+          <p>Name: {product.name}</p>
+          <p>Quantity: {product.stockQuantity}</p>
           <p>Price: ${product.price}</p>
           <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
