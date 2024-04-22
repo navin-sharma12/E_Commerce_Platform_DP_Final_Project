@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 import "./cart.css";
 
 function CartLayout({ items, onRemove }) {
