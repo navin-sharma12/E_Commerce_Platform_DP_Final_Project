@@ -33,13 +33,13 @@ const CartItem = ({ item, fetchCartItems }) => {
   return (
     <div className="cart-item">
       {/* <img src={item.product.img} alt={item.name} /> */}
-      <div className="cartIndividual">
-        <p>Name: {item.product.name}</p>
-        <p>Price: ${item.product.price}</p>
-        <p>Quantity: {item.product.stockQuantity}</p>
-        <button onClick={onRemove}>Remove</button>
-      </div>
+      {/* <div className="cartIndividual"> */}
+      <p>Name: {item.product.name}</p>
+      <p>Price: ${item.product.price}</p>
+      <p>Quantity: {item.product.stockQuantity}</p>
+      <button onClick={onRemove}>Remove</button>
     </div>
+    // </div>
   );
 };
 
