@@ -9,8 +9,11 @@ export const AuthProvider = (props) => {
 
   let isLoggedIn = false;
 
+  console.log(userData);
   if (userData) {
     isLoggedIn = true;
+  } else {
+    isLoggedIn = false;
   }
   return (
     <AuthContext.Provider
