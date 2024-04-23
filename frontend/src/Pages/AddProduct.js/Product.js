@@ -22,10 +22,10 @@ const Product = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <h1
         style={{
-          marginTop: "100px",
+          // marginTop: "10px",
           height: "50px",
           width: "300px",
           alignContent: "center",

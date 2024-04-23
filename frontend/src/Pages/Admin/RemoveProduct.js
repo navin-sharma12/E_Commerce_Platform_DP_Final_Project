@@ -63,7 +63,7 @@ function RemoveProduct() {
               checked={selectedProducts.includes(product.id)}
               onChange={() => handleCheckboxChange(product)}
             />
-            {product.name} - ${product.price} - Qty: {product.quantity}
+            {product.name} - ${product.price} - Qty: {product.stockQuantity}
           </li>
         ))}
       </ul>
