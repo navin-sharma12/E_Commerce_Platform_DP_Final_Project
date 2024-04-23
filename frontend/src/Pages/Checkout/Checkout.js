@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import displayToast from "../../utils/displayToast";
 
 const Checkout = () => {
   const [checkoutItems, setCheckoutItems] = useState([]);
@@ -22,8 +23,10 @@ const Checkout = () => {
       const data = await response.json();
       console.log("checkout data -  ", data);
       setCheckoutItems(data);
+      displayToast({ type: "success", msg: "Order placed successfully." });
     } catch (error) {
       console.error("Error displaying checkout:", error);
+      displayToast({ type: "error", msg: "Couldn't place your order. Something went wrong!" });
     }
   };
   console.log("checkout -  ", checkoutItems);
@@ -43,7 +46,7 @@ const Checkout = () => {
       // height: "max-content",
       width: "500px",
     }}>
-      <h2>Checkout Page</h2>
+      <h2>Invoice</h2>
       <div>
           <p>Invoice Date: {invoiceDate} </p>
           {/* <input type="text" value={invoiceDate} readOnly /> */}
