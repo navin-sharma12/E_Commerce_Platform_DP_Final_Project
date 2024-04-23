@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProductList from "./ProductList";
 
@@ -22,8 +22,17 @@ const Product = () => {
   };
 
   return (
-    <div className="App">
-      <h1>Product Catalog</h1>
+    <div>
+      <h1
+        style={{
+          // marginTop: "10px",
+          height: "50px",
+          width: "300px",
+          alignContent: "center",
+        }}
+      >
+        Product Catalog
+      </h1>
       <ProductList products={products} />
     </div>
   );

@@ -34,6 +34,7 @@ function RemoveProduct() {
   const deleteSelectedProducts = async(event) => {
     event.preventDefault();
     selectedProducts.forEach(id => {
+      console.log(id);
       fetch(`http://localhost:8080/v1/products/${id}`, {
         method: "DELETE",
         mode: 'cors',
@@ -62,7 +63,7 @@ function RemoveProduct() {
               checked={selectedProducts.includes(product.id)}
               onChange={() => handleCheckboxChange(product)}
             />
-            {product.name} - ${product.price} - Qty: {product.quantity}
+            {product.name} - ${product.price} - Qty: {product.stockQuantity}
           </li>
         ))}
       </ul>
