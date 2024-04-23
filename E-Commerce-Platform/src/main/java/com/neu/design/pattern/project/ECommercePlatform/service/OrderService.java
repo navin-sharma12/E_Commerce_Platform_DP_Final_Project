@@ -18,12 +18,17 @@ public class OrderService {
 
     public Order createOrder(List<CartItem> items) {
         Order order = new OrderBuilder().addItem(items).build();
+        order.placeOrder();
         return orderRepository.save(order);
     }
 
     public Order findOrderById(Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+    }
+
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
     }
 
     public Order updateOrderState(Long id, OrderState state) {

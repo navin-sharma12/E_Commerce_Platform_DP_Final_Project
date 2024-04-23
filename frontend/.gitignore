@@ -91,3 +91,4 @@ nb-configuration.xml
 .code-workspace
 ## OS X
 replay_pid*
+package-lock
