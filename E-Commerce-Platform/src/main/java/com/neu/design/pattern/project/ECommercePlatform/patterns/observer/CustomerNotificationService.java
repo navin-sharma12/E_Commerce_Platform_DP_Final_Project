@@ -36,7 +36,7 @@ public class CustomerNotificationService implements OrderObserver {
         emailBuilder.append("<p>Thank you for your order! Here are your order details:</p>");
 
         // Order Details
-        emailBuilder.append("<h2 style='color: #5D6975;'>Order ID: ").append(order.getId()).append("</h2>");
+        emailBuilder.append("<h2 style='color: #5D6975;'>Order Details ").append("</h2>");
         emailBuilder.append("<ul>");
         for (CartItem item : order.getItems()) {
             emailBuilder.append("<li>")
