@@ -7,13 +7,13 @@ AuthContext.displayName = "AuthContext";
 export const AuthProvider = (props) => {
   const [userData, setUserData] = useLocalStorageState("userData", null);
 
-  let isLoggedIn = true;
+  let isLoggedIn = false;
 
-  console.log("userdata", userData);
+  // console.log("userdata", userData);
   if (userData) {
     isLoggedIn = true;
   } else {
-    isLoggedIn = true;
+    isLoggedIn = false;
   }
   return (
     <AuthContext.Provider

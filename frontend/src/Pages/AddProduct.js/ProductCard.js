@@ -5,22 +5,13 @@ import displayToast from "../../utils/displayToast";
 
 const ProductCard = ({ product }) => {
   const handleAddToCart = async () => {
-    fetch("http://localhost:8080/v1/cart/add", {
+    const url = "http://localhost:8080/v1/cart/add/" + product.id;
+    fetch(url, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        quantity: 1,
-        product: {
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          stockQuantity: product.stockQuantity,
-          imgUrl: product.imgUrl,
-        },
-      }),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -39,10 +30,10 @@ const ProductCard = ({ product }) => {
   return (
     <div>
       <div className="card">
-        <img src={product.imgUrl} alt={product.name} />
+        {/* <img src={product.imgUrl} alt={product.name} /> */}
         <div className="card-body">
-          <h2>{product.name}</h2>
-          <p>{product.stockQuantity}</p>
+          <p>Name: {product.name}</p>
+          <p>Quantity: {product.stockQuantity}</p>
           <p>Price: ${product.price}</p>
           <button onClick={handleAddToCart}>Add to Cart</button>
         </div>

@@ -12,7 +12,7 @@ import displayToast from "../utils/displayToast";
 function Sidenav() {
   const history = useHistory();
   const { isLoggedIn, setUserData } = useContext(AuthContext);
-
+  console.log("Userdata - Test Sidebar");
   const logoutUser = () => {
     displayToast("Logged out successfully!", "success");
     setTimeout(() => {
@@ -58,7 +58,6 @@ function Sidenav() {
                 style={{ cursor: "pointer", color: "#3498DB" }} // Blue for interactive icons
               />
             </Link>
-            Hi {/* Displaying user's greeting */}
           </Navbar.Text>
           <Link to="/cart">
             <FontAwesomeIcon
